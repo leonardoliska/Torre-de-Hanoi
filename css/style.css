@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Russo+One&display=swap');
+
+:root {
+    --color-dark: #082032;
+    --color-light: #FFF;
+    --color-grey-1: #2C394B;
+    --color-grey-2: #334756;
+    --color-primary: #FF4C29;
+}
+
+/* HEADER */
+header {
+    box-sizing: border-box;
+    color: var(--color-light);
+    background-color: var(--color-dark);
+    font-family: "Press Start 2P";
+    font-size: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    height: 15vh;
+    min-height: 50px;
+}
+h1 {
+    width: 100%;
+}
+
+/* FOOTER */
+footer {
+    box-sizing: border-box;
+    color: var(--color-light);
+    background-color: var(--color-dark);
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    min-height: 50px;
+}
+footer p {
+    width: 50%;
+    padding: 0 4%;
+    font-family: 'Russo One';
+    font-size: 18px;
+    letter-spacing: 3px;
+}
+footer p:first-child {
+    text-align: right;
+}
+
+
+/* MAIN */
+main {
+    background-color: var(--color-grey-1);
+    height: 70vh;
+    min-height: 280px;
+    padding: 0 5%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* GAME */
+#game-container {
+    background-color: var(--color-grey-2);
+    height: 60vh; 
+    width: 100%;
+    min-height: 240px;
+    max-width: 700px;
+}
+
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 568px) {
+    header {
+        font-size: 26px;
+    }
+    footer p {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    header {
+        font-size: 30px;
+    }
+    footer p {
+        font-size: 24px;
+    }
+}
