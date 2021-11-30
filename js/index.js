@@ -11,16 +11,17 @@ function createTower() {
         towerBase.classList.add("x-line")
         towerColumn.classList.add("y-line")
 
+        // Adicionar eventListener
+        towerContainer.addEventListener('click', selectTower)
+        
         //Posicionar elementos em seus respectivos Parents
         towerContainer.appendChild(towerBase)
         towerContainer.appendChild(towerColumn)
         const gameContainer = document.getElementById("game-container")
         gameContainer.appendChild(towerContainer)
+
     }
 }
-
-let dificulty = 4
-const pieceColors = ["#F00", "#0F0", "#00F", "#F0F"]
 
 function createPieces(){
     for (let i = 1; i <= dificulty; i++){
@@ -38,7 +39,7 @@ function createPieces(){
         piece.style.width = piece.style.width = `${(40 / dificulty) * i + 20}%`
 
         //Adicionar EventListener
-        piece.addEventListener("click", selectPiece)
+        // piece.addEventListener("click", selectPiece)
 
         //Posicionar elementos em seus respectivos Parents
         const tower = document.getElementById("tower-1")
@@ -47,25 +48,24 @@ function createPieces(){
 }
 
 
-function selectPiece (event){
-    console.log(event.target)
+// function selectPiece (event){
+//     console.log(event.target)
+//     const piece = event.currenttarget
+//     console.log(piece)
 
-    const piece = event.target
-    isPieceAbove(piece)
+// }
+
+function selectTower(event) {
+    const tower = event.currentTarget
+        console.log(tower)
 
 }
 
-function isPieceAbove(piece){
-    if(piece.parentNode.querySelectorAll(".piece")[0]==piece) {  
-        console.log("acima")       
-        return true
-    }else{
-        console.log("abaixo")
-        return false
-    }
-}
 
 
+
+let dificulty = 4
+const pieceColors = ["#F00", "#0F0", "#00F", "#F0F"]
 
 createTower()
 createPieces()
