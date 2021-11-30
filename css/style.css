@@ -81,6 +81,9 @@ main {
     align-items: center;
     padding-bottom: 3vh;
 }
+    .tower:hover {
+        cursor: pointer;
+    }
 
 .x-line {
     width: 90%;
@@ -107,7 +110,40 @@ main {
     width: 90%;
     border-radius: 5px;
     z-index: 10;
+    border: 2px solid #333;
+    outline: 1px solid #fff;
+    margin: 1px 0;
+    box-sizing: border-box;
 }
+#difficulty {
+    font-family: 'Russo One';
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.difficulty-title {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+    color: var(--color-light);
+    font-size: 20px;
+}
+.difficulty-button {
+    font-family: 'Russo One';
+    margin: 10px;
+    padding: 5px 25px;
+    border-radius: 5px;
+    font-size: 16px;
+    border: 2px solid var(--color-dark); 
+    width: 70%;
+}
+    .difficulty-button:hover {
+        opacity: 0.8;
+        transition-duration: 0.3s;
+        cursor: pointer;
+    }
 
 
 /* MEDIA QUERIES */
@@ -126,5 +162,16 @@ main {
     }
     footer p {
         font-size: 24px;
+    }
+    #difficulty {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .difficulty-title {
+        font-size: 25px;
+    }
+    .difficulty-button {
+        width: 20%;
+        font-size: 20px;
     }
 }
