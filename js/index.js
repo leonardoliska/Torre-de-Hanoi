@@ -35,12 +35,37 @@ function createPieces(){
         piece.style.backgroundColor = pieceColors[i-1]
 
         //Adicionar Width
-        piece.style.width = `${(80 / dificulty) * i}%`
+        piece.style.width = piece.style.width = `${(40 / dificulty) * i + 20}%`
+
+        //Adicionar EventListener
+        piece.addEventListener("click", selectPiece)
 
         //Posicionar elementos em seus respectivos Parents
         const tower = document.getElementById("tower-1")
         tower.appendChild(piece)
-
-        
     }
 }
+
+
+function selectPiece (event){
+    console.log(event.target)
+
+    const piece = event.target
+    isPieceAbove(piece)
+
+}
+
+function isPieceAbove(piece){
+    if(piece.parentNode.querySelectorAll(".piece")[0]==piece) {  
+        console.log("acima")       
+        return true
+    }else{
+        console.log("abaixo")
+        return false
+    }
+}
+
+
+
+createTower()
+createPieces()
