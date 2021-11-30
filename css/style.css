@@ -69,18 +69,19 @@ main {
     display: flex;
     align-items: center;
 }
-
 .tower {
     box-sizing: border-box;
     width: 33.33%;
     height: 50%;
     position: relative;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    flex-direction: column-reverse;
     align-items: center;
     padding-bottom: 3vh;
 }
+    .tower:hover {
+        cursor: pointer;
+    }
 
 .x-line {
     width: 90%;
@@ -107,8 +108,11 @@ main {
     width: 90%;
     border-radius: 5px;
     z-index: 10;
+    transition-duration: 0.1s;
 }
-
+.piece-selected {
+    transform: translateY(-10px);
+}
 
 /* MEDIA QUERIES */
 @media only screen and (min-width: 568px) {

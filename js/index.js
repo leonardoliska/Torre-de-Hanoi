@@ -12,7 +12,7 @@ function createTower() {
         towerColumn.classList.add("y-line")
 
         // Adicionar eventListener
-        towerContainer.addEventListener('click', selectTower)
+        towerContainer.addEventListener('click', towerEventHandler)
         
         //Posicionar elementos em seus respectivos Parents
         towerContainer.appendChild(towerBase)
@@ -24,7 +24,7 @@ function createTower() {
 }
 
 function createPieces(){
-    for (let i = 1; i <= dificulty; i++){
+    for (let i = dificulty; i >= 1; i--){
 
         //Criar elementos
         const piece = document.createElement("div")
@@ -47,22 +47,55 @@ function createPieces(){
     }
 }
 
+function createPieces2(){
+    for (let i = dificulty; i >= 1; i--){
 
-// function selectPiece (event){
-//     console.log(event.target)
-//     const piece = event.currenttarget
-//     console.log(piece)
+        //Criar elementos
+        const piece = document.createElement("div")
 
-// }
+        //Adicionar Classes 
+        piece.classList.add("piece")
 
-function selectTower(event) {
-    const tower = event.currentTarget
-        console.log(tower)
+        //Adicionar Cores
+        piece.style.backgroundColor = pieceColors[i-1]
 
+        //Adicionar Width
+        piece.style.width = piece.style.width = `${(40 / dificulty) * i + 20}%`
+
+        //Adicionar EventListener
+        // piece.addEventListener("click", selectPiece)
+
+        //Posicionar elementos em seus respectivos Parents
+        const tower = document.getElementById("tower-2")
+        tower.appendChild(piece)
+    }
 }
 
+function towerEventHandler(event) {
+    
+    const currentTower = event.currentTarget
+    const currentTowerPieces = currentTower.querySelectorAll('.piece')
+    const currentTowerUpperPiece = currentTowerPieces[currentTowerPieces.length - 1]
+    const selectedPiece = document.querySelector('.piece-selected')
 
-
+    if (currentTowerPieces.length !== 0) {
+        if (selectedPiece !== null) {
+            if (currentTower === selectedPiece.parentElement) {
+                selectedPiece.classList.remove('piece-selected')
+            }
+        }
+        else {
+            currentTowerUpperPiece.classList.add('piece-selected')
+        }
+    }
+    
+    if (selectedPiece !== null) {
+        if (currentTowerPieces.length === 0 || selectedPiece.clientWidth < currentTowerUpperPiece.clientWidth) {
+            currentTower.appendChild(selectedPiece)
+            selectedPiece.classList.remove('piece-selected')
+        }
+    }
+}
 
 let dificulty = 4
 const pieceColors = ["#F00", "#0F0", "#00F", "#F0F"]
