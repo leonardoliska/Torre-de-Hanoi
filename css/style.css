@@ -2,17 +2,15 @@
 
 :root {
     --color-dark: #082032;
-    --color-light: #FFF;
-    --color-grey-1: #2C394B;
-    --color-grey-2: #334756;
-    --color-primary: #FF4C29;
+    --color-primary: #2dd2d2;
+    --color-secondary-1: #383838;
+    --color-secondary-2: #484848;
 }
 
 /* HEADER */
 header {
     box-sizing: border-box;
-    color: var(--color-light);
-    background-color: var(--color-dark);
+    background-color: var(--color-secondary-1);
     font-family: "Press Start 2P";
     font-size: 20px;
     text-align: center;
@@ -20,36 +18,46 @@ header {
     align-items: center;
     height: 15vh;
     min-height: 50px;
+    border-bottom: 10px solid var(--color-primary);
+    /* border-top: 10px solid var(--color-primary); */
 }
 h1 {
     width: 100%;
+    color: var(--color-primary);
 }
 
 /* FOOTER */
 footer {
     box-sizing: border-box;
-    color: var(--color-light);
-    background-color: var(--color-dark);
+    color: var(--color-primary);
+    background-color: var(--color-secondary-1);
     height: 15vh;
     display: flex;
+    justify-content: center;
     align-items: center;
     min-height: 50px;
+    border-top: 10px solid var(--color-primary);
 }
 footer p {
-    width: 50%;
-    padding: 0 4%;
+    padding: 5px 4%;
     font-family: 'Russo One';
+    margin: 0 2%;
     font-size: 18px;
     letter-spacing: 3px;
+    border-bottom: 2px solid var(--color-primary);
+    border-left: 2px solid var(--color-primary);
 }
 footer p:first-child {
     text-align: right;
+    border-right: 2px solid var(--color-primary);
+    border-left: 0;
+
 }
 
 
 /* MAIN */
 main {
-    background-color: var(--color-grey-1);
+    background-color: var(--color-secondary-2);
     height: 70vh;
     min-height: 280px;
     padding: 0 5%;
@@ -61,12 +69,91 @@ main {
 
 /* GAME */
 #game-container {
-    background-color: var(--color-grey-2);
+    background-color: var(--color-secondary-1);
     height: 60vh; 
     width: 100%;
     min-height: 240px;
     max-width: 700px;
+    display: flex;
+    align-items: center;
+    border: 10px solid var(--color-primary);
+    border-radius: 10px;
 }
+
+.tower {
+    box-sizing: border-box;
+    width: 33.33%;
+    height: 50%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 3vh;
+}
+    .tower:hover {
+        cursor: pointer;
+    }
+
+.x-line {
+    width: 90%;
+    height: 10%;
+    background-color: var(--color-dark);
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0%;
+    left: 5%;
+}
+
+.y-line {
+    width: 10%;
+    height: 100%;
+    background-color: var(--color-dark);
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0%;
+    left: 45%;
+}
+
+.piece {
+    height: 10%;
+    width: 90%;
+    border-radius: 5px;
+    z-index: 10;
+    border: 2px solid #333;
+    outline: 1px solid #fff;
+    margin: 1px 0;
+    box-sizing: border-box;
+}
+#difficulty {
+    font-family: 'Russo One';
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.difficulty-title {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+    color: var(--color-light);
+    font-size: 20px;
+}
+.difficulty-button {
+    font-family: 'Russo One';
+    margin: 10px;
+    padding: 5px 25px;
+    border-radius: 5px;
+    font-size: 16px;
+    border: 2px solid var(--color-dark); 
+    width: 70%;
+}
+    .difficulty-button:hover {
+        opacity: 0.8;
+        transition-duration: 0.3s;
+        cursor: pointer;
+    }
 
 
 /* MEDIA QUERIES */
@@ -85,5 +172,16 @@ main {
     }
     footer p {
         font-size: 24px;
+    }
+    #difficulty {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .difficulty-title {
+        font-size: 25px;
+    }
+    .difficulty-button {
+        width: 20%;
+        font-size: 20px;
     }
 }
