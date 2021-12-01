@@ -1,10 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Russo+One&display=swap');
 
 :root {
-    --color-dark: #082032;
-    --color-primary: #2dd2d2;
-    --color-secondary-1: #383838;
-    --color-secondary-2: #484848;
+    --color-light: #fff;
+    --color-primary: #6E3CBC;
+    --color-secondary-1: #7267CB;
+    --color-secondary-2: #98BAE7;
+    --color-secondary-3: #B8E4F0;
+    --color-secondary-4: #99FEFF;
+    --color-secondary-5: #575569;
+
+
 }
 
 /* HEADER */
@@ -23,13 +28,13 @@ header {
 header h1 {
     width: 100%;
     font-size: 20px;
-    color: var(--color-primary);
+    color: var(--color-secondary-4);
 }
 
 /* FOOTER */
 footer {
     box-sizing: border-box;
-    color: var(--color-primary);
+    color: var(--color-secondary-4);
     background-color: var(--color-secondary-1);
     height: 15vh;
     display: flex;
@@ -44,13 +49,13 @@ footer p {
     margin: 0 2%;
     font-size: 18px;
     letter-spacing: 3px;
-    border-bottom: 2px solid var(--color-primary);
-    border-left: 2px solid var(--color-primary);
+    border-bottom: 2px solid var(--color-secondary-4);
+    border-left: 2px solid var(--color-secondary-4);
     border-radius: 0 0 0 5px;
 }
 footer p:first-child {
     text-align: right;
-    border-right: 2px solid var(--color-primary);
+    border-right: 2px solid var(--color-secondary-4);
     border-left: 0;
     border-radius: 0 0 5px 0;
 }
@@ -60,10 +65,11 @@ footer p:first-child {
 main {
     background-color: var(--color-secondary-2);
     height: 70vh;
-    min-height: 280px;
+    min-height: 320px;
     padding: 0 5%;
     box-sizing: border-box;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -71,13 +77,14 @@ main {
 /* GAME */
 #game-container {
     background-color: var(--color-secondary-1);
-    height: 60vh; 
+    height: 50vh; 
     width: 100%;
     min-height: 240px;
     max-width: 700px;
     display: flex;
     align-items: center;
-    border: 10px solid var(--color-primary);
+    flex-wrap: wrap;
+    border: 10px solid var(--color-secondary-3);
     border-radius: 25px;
 }
 
@@ -89,7 +96,7 @@ main {
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-    padding-bottom: 3vh;
+    padding-bottom: 12px;
 }
     .tower:hover {
         cursor: pointer;
@@ -97,8 +104,8 @@ main {
 
 .x-line {
     width: 90%;
-    height: 10%;
-    background-color: var(--color-dark);
+    height: 12px;
+    background-color: var(--color-secondary-5);
     border-radius: 5px;
     position: absolute;
     bottom: 0%;
@@ -106,13 +113,13 @@ main {
 }
 
 .y-line {
-    width: 10%;
+    width: 12px;
     height: 100%;
-    background-color: var(--color-dark);
+    background-color: var(--color-secondary-5);
     border-radius: 5px;
     position: absolute;
     bottom: 0%;
-    left: 45%;
+    left: calc(calc(100% - 12px) / 2);
 }
 
 .piece {
@@ -122,14 +129,59 @@ main {
     z-index: 10;
     transition-duration: 0.1s;
     border: 2px solid #333;
-    outline: 1px solid #fff;
-    margin: 1px 0;
     box-sizing: border-box;
 }
 .piece-selected {
     transform: translateY(-10px);
 }
 
+#game-info {
+    background-color: var(--color-secondary-1);
+    width: 100%;
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#counter {
+    box-sizing: border-box;
+    width: 35%;
+    height: 7vh;
+    min-height: 28px;
+    background-color: var(--color-secondary-2);
+    color: var(--color-light);
+    font-family: 'Russo One';
+    display: flex;
+    border: 2px solid var(--color-light);
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    word-spacing: 10px;
+    min-width: 110px;
+    max-width: 150px;
+
+}
+
+#reset-button {
+    box-sizing: border-box;
+    min-height: 28px;
+    width: 35%;
+    height: 7vh;
+    background-color: var(--color-secondary-2);
+    color: var(--color-light);
+    font-family: 'Russo One';
+    border: 2px solid var(--color-light);
+    font-size: 16px;
+    border-radius: 5px;
+    min-width: 110px;
+    max-width: 150px;
+    letter-spacing: 1                                                                                                                            px;
+}
+    #reset-button:hover {
+        background-color: var(--color-primary);
+        cursor: pointer;
+        transition-duration: 0.2s;
+    }
 
 /* Difficulty */
 #difficulty {
@@ -146,6 +198,7 @@ main {
     margin-bottom: 20px;
     color: var(--color-light);
     font-size: 20px;
+    letter-spacing: 2px;
 }
 .difficulty-button {
     font-family: 'Russo One';
@@ -153,15 +206,58 @@ main {
     padding: 5px 25px;
     border-radius: 5px;
     font-size: 16px;
-    border: 2px solid var(--color-dark); 
+    background-color: var(--color-secondary-2);
+    color: var(--color-light);
+    border: 2px solid var(--color-light); 
     width: 70%;
+    letter-spacing: 2px;
 }
     .difficulty-button:hover {
-        opacity: 0.8;
-        transition-duration: 0.3s;
+        background-color: var(--color-primary);
         cursor: pointer;
+        transition-duration: 0.2s;
     }
 
+/* Victory PopUP */
+#victory-container {
+    width: 60%;
+    height: 30vh;
+    background-color: var(--color-secondary-2);
+    position: absolute;
+    top: 35%;
+    left: 20%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 5px solid var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    min-height: 100px;
+    z-index: 20;
+}
+.victoryText {
+    color: var(--color-light);
+    font-family: 'Russo One';
+    font-size: 20px;
+}
+.closeButton {
+    color: var(--color-light);
+    font-family: 'Russo One';
+    background-color: var(--color-secondary-1);
+    border: 2px solid var(--color-primary);
+    border-radius: 5px;
+    height: 30px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    width: 60%;
+}
+    .closeButton:hover {
+        background-color: var(--color-primary);
+        cursor: pointer;
+        transition-duration: 0.2s;
+        border-color: var(--color-light);
+    }
 
 /* MEDIA QUERIES */
 @media only screen and (min-width: 568px) {
@@ -170,6 +266,10 @@ main {
     }
     footer p {
         font-size: 20px;
+    }
+    #victory-container {
+        max-width: 330px;
+        left: calc(calc(100% - 330px) / 2)
     }
 }
 
