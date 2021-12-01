@@ -1,73 +1,86 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Russo+One&display=swap');
 
 :root {
-    --color-dark: #082032;
-    --color-light: #FFF;
-    --color-grey-1: #2C394B;
-    --color-grey-2: #334756;
-    --color-primary: #FF4C29;
+    --color-light: #fff;
+    --color-primary: #2dd2d2;
+    --color-secondary-1: #303030;
+    --color-secondary-2: #484848;
 }
 
 /* HEADER */
 header {
     box-sizing: border-box;
-    color: var(--color-light);
-    background-color: var(--color-dark);
+    background-color: var(--color-secondary-1);
     font-family: "Press Start 2P";
-    font-size: 20px;
     text-align: center;
     display: flex;
     align-items: center;
     height: 15vh;
     min-height: 50px;
+    border-bottom: 10px solid var(--color-primary);
+    /* border-top: 10px solid var(--color-primary); */
 }
-h1 {
+header h1 {
     width: 100%;
+    font-size: 20px;
+    color: var(--color-primary);
 }
 
 /* FOOTER */
 footer {
     box-sizing: border-box;
-    color: var(--color-light);
-    background-color: var(--color-dark);
+    color: var(--color-primary);
+    background-color: var(--color-secondary-1);
     height: 15vh;
     display: flex;
+    justify-content: center;
     align-items: center;
     min-height: 50px;
+    border-top: 10px solid var(--color-primary);
 }
 footer p {
-    width: 50%;
-    padding: 0 4%;
+    padding: 10px 4%;
     font-family: 'Russo One';
+    margin: 0 2%;
     font-size: 18px;
     letter-spacing: 3px;
+    border-bottom: 2px solid var(--color-primary);
+    border-left: 2px solid var(--color-primary);
+    border-radius: 0 0 0 5px;
 }
 footer p:first-child {
     text-align: right;
+    border-right: 2px solid var(--color-primary);
+    border-left: 0;
+    border-radius: 0 0 5px 0;
 }
 
 
 /* MAIN */
 main {
-    background-color: var(--color-grey-1);
+    background-color: var(--color-secondary-2);
     height: 70vh;
-    min-height: 280px;
+    min-height: 320px;
     padding: 0 5%;
     box-sizing: border-box;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
 /* GAME */
 #game-container {
-    background-color: var(--color-grey-2);
-    height: 60vh; 
+    background-color: var(--color-secondary-1);
+    height: 50vh; 
     width: 100%;
     min-height: 240px;
     max-width: 700px;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    border: 10px solid var(--color-primary);
+    border-radius: 25px;
 }
 
 .tower {
@@ -76,10 +89,9 @@ main {
     height: 50%;
     position: relative;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    flex-direction: column-reverse;
     align-items: center;
-    padding-bottom: 3vh;
+    padding-bottom: 12px;
 }
     .tower:hover {
         cursor: pointer;
@@ -87,8 +99,8 @@ main {
 
 .x-line {
     width: 90%;
-    height: 10%;
-    background-color: var(--color-dark);
+    height: 12px;
+    background-color: var(--color-primary);
     border-radius: 5px;
     position: absolute;
     bottom: 0%;
@@ -96,13 +108,13 @@ main {
 }
 
 .y-line {
-    width: 10%;
+    width: 12px;
     height: 100%;
-    background-color: var(--color-dark);
+    background-color: var(--color-primary);
     border-radius: 5px;
     position: absolute;
     bottom: 0%;
-    left: 45%;
+    left: calc(calc(100% - 12px) / 2);
 }
 
 .piece {
@@ -110,11 +122,65 @@ main {
     width: 90%;
     border-radius: 5px;
     z-index: 10;
+    transition-duration: 0.1s;
     border: 2px solid #333;
     outline: 1px solid #fff;
     margin: 1px 0;
     box-sizing: border-box;
 }
+.piece-selected {
+    transform: translateY(-10px);
+}
+
+#game-info {
+    background-color: var(--color-secondary-1);
+    width: 100%;
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#counter {
+    box-sizing: border-box;
+    width: 35%;
+    height: 7vh;
+    min-height: 28px;
+    background-color: var(--color-secondary-2);
+    color: var(--color-light);
+    font-family: 'Russo One';
+    display: flex;
+    border: 2px solid var(--color-light);
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    word-spacing: 10px;
+    min-width: 110px;
+    max-width: 150px;
+
+}
+
+#reset-button {
+    box-sizing: border-box;
+    min-height: 28px;
+    width: 35%;
+    height: 7vh;
+    background-color: var(--color-secondary-2);
+    color: var(--color-light);
+    font-family: 'Russo One';
+    border: 2px solid var(--color-light);
+    font-size: 16px;
+    border-radius: 5px;
+    min-width: 110px;
+    max-width: 150px;
+    letter-spacing: 1                                                                                                                            px;
+}
+    #reset-button:hover {
+        background-color: var(--color-primary);
+        cursor: pointer;
+        transition-duration: 0.2s;
+    }
+
+/* Difficulty */
 #difficulty {
     font-family: 'Russo One';
     margin: auto;
@@ -129,6 +195,7 @@ main {
     margin-bottom: 20px;
     color: var(--color-light);
     font-size: 20px;
+    letter-spacing: 2px;
 }
 .difficulty-button {
     font-family: 'Russo One';
@@ -136,28 +203,75 @@ main {
     padding: 5px 25px;
     border-radius: 5px;
     font-size: 16px;
-    border: 2px solid var(--color-dark); 
+    background-color: var(--color-secondary-2);
+    color: var(--color-light);
+    border: 2px solid var(--color-light); 
     width: 70%;
+    letter-spacing: 2px;
 }
     .difficulty-button:hover {
-        opacity: 0.8;
-        transition-duration: 0.3s;
+        background-color: var(--color-primary);
         cursor: pointer;
+        transition-duration: 0.2s;
     }
 
+/* Victory PopUP */
+#victory-container {
+    width: 60%;
+    height: 30vh;
+    background-color: var(--color-secondary-2);
+    position: absolute;
+    top: 35%;
+    left: 20%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 5px solid var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    min-height: 100px;
+    z-index: 20;
+}
+.victoryText {
+    color: var(--color-light);
+    font-family: 'Russo One';
+    font-size: 20px;
+}
+.closeButton {
+    color: var(--color-light);
+    font-family: 'Russo One';
+    background-color: var(--color-secondary-1);
+    border: 2px solid var(--color-primary);
+    border-radius: 5px;
+    height: 30px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    width: 60%;
+}
+    .closeButton:hover {
+        background-color: var(--color-primary);
+        cursor: pointer;
+        transition-duration: 0.2s;
+        border-color: var(--color-light);
+    }
 
 /* MEDIA QUERIES */
 @media only screen and (min-width: 568px) {
-    header {
+    header h1 {
         font-size: 26px;
     }
     footer p {
         font-size: 20px;
     }
+    #victory-container {
+        max-width: 330px;
+        left: calc(calc(100% - 330px) / 2)
+    }
 }
 
 @media only screen and (min-width: 1024px) {
-    header {
+    header h1 {
         font-size: 30px;
     }
     footer p {
