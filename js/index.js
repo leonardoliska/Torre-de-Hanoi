@@ -4,18 +4,18 @@ function createTower() {
         const towerContainer = document.createElement("div")
         const towerBase = document.createElement("div")
         const towerColumn = document.createElement("div")
-       
+
         // Adicionar Classes
         towerContainer.classList.add("tower")
         towerBase.classList.add("x-line")
         towerColumn.classList.add("y-line")
-        
+
         // Adicionar ID's
         towerContainer.id = `tower-${i}`
 
         // Adicionar eventListener
         towerContainer.addEventListener('click', towerEventHandler)
-        
+
         //Posicionar elementos em seus respectivos Parents
         const gameContainer = document.getElementById("game-container")
         gameContainer.appendChild(towerContainer)
@@ -24,8 +24,8 @@ function createTower() {
     }
 }
 
-function createPieces(){
-    for (let i = selectedDifficulty; i >= 1; i--){
+function createPieces() {
+    for (let i = selectedDifficulty; i >= 1; i--) {
 
         //Criar elementos
         const piece = document.createElement("div")
@@ -34,7 +34,7 @@ function createPieces(){
         piece.classList.add("piece")
 
         //Adicionar Cores
-        piece.style.backgroundColor = pieceColors[i-1]
+        piece.style.backgroundColor = pieceColors[i - 1]
 
         //Adicionar Width
         piece.style.width = `${(50 / selectedDifficulty) * i + 20}%`
@@ -71,7 +71,7 @@ function createGameInfo() {
 }
 
 function createDifficultyScreen() {
-    
+
     // Criar elementos
     const difficultyContainer = document.createElement('div')
     const difficultyTitle = document.createElement('h2')
@@ -118,15 +118,15 @@ function selectDifficulty(event) {
             case 'easy':
                 selectedDifficulty = 3
                 break
-                
+
             case 'medium':
                 selectedDifficulty = 5
                 break
-                
+
             case 'hard':
                 selectedDifficulty = 7
                 break
-            
+
             default: {
                 selectedDifficulty = 3
             }
@@ -181,8 +181,21 @@ function updateCounter() {
     counterElement.innerText = `Counter: ${counter}`
 }
 
+
+function checkVitory() {
+    const towers = document.querySelectorAll('.tower')
+    const pieceClass = towers[2].querySelectorAll(".piece")
+    if (pieceClass.length == selectedDifficulty) {
+        victoryPopUp()
+        for (let i = 0; i < towers.length; i++) {
+            towers[i].removeEventListener("click", towerEventHandler)
+        }
+    }
+}
+
+
 function towerEventHandler(event) {
-    
+
     const currentTower = event.currentTarget
     const currentTowerPieces = currentTower.querySelectorAll('.piece')
     const currentTowerUpperPiece = currentTowerPieces[currentTowerPieces.length - 1]
@@ -198,7 +211,7 @@ function towerEventHandler(event) {
             currentTowerUpperPiece.classList.add('piece-selected')
         }
     }
-    
+
     if (selectedPiece !== null) {
         if (currentTowerPieces.length === 0 || selectedPiece.clientWidth < currentTowerUpperPiece.clientWidth) {
             currentTower.appendChild(selectedPiece)
@@ -206,10 +219,12 @@ function towerEventHandler(event) {
             updateCounter()
         }
     }
+    checkVitory()
 }
 
 let selectedDifficulty = 4
 let counter = 0
-const pieceColors = ["#2dd2d2", "#2dd2d2", "#2dd2d2", "#2dd2d2", "#2dd2d2", "#2dd2d2", "#2dd2d2"]
+const pieceColors = ["#e4d0ff", "#d6b6ff", "#c79dff", "#b983ff", "#ab6aff", "#9c50ff", "#8e37ff"]
 
 resetGame()
+

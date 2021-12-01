@@ -2,9 +2,14 @@
 
 :root {
     --color-light: #fff;
-    --color-primary: #2dd2d2;
-    --color-secondary-1: #303030;
-    --color-secondary-2: #484848;
+    --color-primary: #6E3CBC;
+    --color-secondary-1: #7267CB;
+    --color-secondary-2: #98BAE7;
+    --color-secondary-3: #B8E4F0;
+    --color-secondary-4: #99FEFF;
+    --color-secondary-5: #575569;
+
+
 }
 
 /* HEADER */
@@ -23,13 +28,13 @@ header {
 header h1 {
     width: 100%;
     font-size: 20px;
-    color: var(--color-primary);
+    color: var(--color-secondary-4);
 }
 
 /* FOOTER */
 footer {
     box-sizing: border-box;
-    color: var(--color-primary);
+    color: var(--color-secondary-4);
     background-color: var(--color-secondary-1);
     height: 15vh;
     display: flex;
@@ -44,13 +49,13 @@ footer p {
     margin: 0 2%;
     font-size: 18px;
     letter-spacing: 3px;
-    border-bottom: 2px solid var(--color-primary);
-    border-left: 2px solid var(--color-primary);
+    border-bottom: 2px solid var(--color-secondary-4);
+    border-left: 2px solid var(--color-secondary-4);
     border-radius: 0 0 0 5px;
 }
 footer p:first-child {
     text-align: right;
-    border-right: 2px solid var(--color-primary);
+    border-right: 2px solid var(--color-secondary-4);
     border-left: 0;
     border-radius: 0 0 5px 0;
 }
@@ -79,7 +84,7 @@ main {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    border: 10px solid var(--color-primary);
+    border: 10px solid var(--color-secondary-3);
     border-radius: 25px;
 }
 
@@ -100,7 +105,7 @@ main {
 .x-line {
     width: 90%;
     height: 12px;
-    background-color: var(--color-primary);
+    background-color: var(--color-secondary-5);
     border-radius: 5px;
     position: absolute;
     bottom: 0%;
@@ -110,7 +115,7 @@ main {
 .y-line {
     width: 12px;
     height: 100%;
-    background-color: var(--color-primary);
+    background-color: var(--color-secondary-5);
     border-radius: 5px;
     position: absolute;
     bottom: 0%;
@@ -124,8 +129,6 @@ main {
     z-index: 10;
     transition-duration: 0.1s;
     border: 2px solid #333;
-    outline: 1px solid #fff;
-    margin: 1px 0;
     box-sizing: border-box;
 }
 .piece-selected {
