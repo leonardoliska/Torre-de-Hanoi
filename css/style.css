@@ -2,20 +2,15 @@
 
 :root {
     --color-light: #fff;
-    --color-primary: #6E3CBC;
-    --color-secondary-1: #7267CB;
-    --color-secondary-2: #98BAE7;
-    --color-secondary-3: #B8E4F0;
-    --color-secondary-4: #99FEFF;
-    --color-secondary-5: #575569;
-
-
+    --color-primary: #2dd2d2;
+    --color-dark-1: #303030;
+    --color-dark-2: #484848;
 }
 
 /* HEADER */
 header {
     box-sizing: border-box;
-    background-color: var(--color-secondary-1);
+    background-color: var(--color-dark-1);
     font-family: "Press Start 2P";
     text-align: center;
     display: flex;
@@ -28,14 +23,14 @@ header {
 header h1 {
     width: 100%;
     font-size: 20px;
-    color: var(--color-secondary-4);
+    color: var(--color-primary);
 }
 
 /* FOOTER */
 footer {
     box-sizing: border-box;
-    color: var(--color-secondary-4);
-    background-color: var(--color-secondary-1);
+    color: var(--color-primary);
+    background-color: var(--color-dark-1);
     height: 15vh;
     display: flex;
     justify-content: center;
@@ -49,13 +44,13 @@ footer p {
     margin: 0 2%;
     font-size: 18px;
     letter-spacing: 3px;
-    border-bottom: 2px solid var(--color-secondary-4);
-    border-left: 2px solid var(--color-secondary-4);
+    border-bottom: 2px solid var(--color-primary);
+    border-left: 2px solid var(--color-primary);
     border-radius: 0 0 0 5px;
 }
 footer p:first-child {
     text-align: right;
-    border-right: 2px solid var(--color-secondary-4);
+    border-right: 2px solid var(--color-primary);
     border-left: 0;
     border-radius: 0 0 5px 0;
 }
@@ -63,7 +58,7 @@ footer p:first-child {
 
 /* MAIN */
 main {
-    background-color: var(--color-secondary-2);
+    background-color: var(--color-dark-2);
     height: 70vh;
     min-height: 320px;
     padding: 0 5%;
@@ -76,7 +71,7 @@ main {
 
 /* GAME */
 #game-container {
-    background-color: var(--color-secondary-1);
+    background-color: var(--color-dark-1);
     height: 50vh; 
     width: 100%;
     min-height: 240px;
@@ -84,7 +79,7 @@ main {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    border: 10px solid var(--color-secondary-3);
+    border: 10px solid var(--color-primary);
     border-radius: 25px;
 }
 
@@ -105,7 +100,7 @@ main {
 .x-line {
     width: 90%;
     height: 12px;
-    background-color: var(--color-secondary-5);
+    background-color: var(--color-primary);
     border-radius: 5px;
     position: absolute;
     bottom: 0%;
@@ -115,7 +110,7 @@ main {
 .y-line {
     width: 12px;
     height: 100%;
-    background-color: var(--color-secondary-5);
+    background-color: var(--color-primary);
     border-radius: 5px;
     position: absolute;
     bottom: 0%;
@@ -129,6 +124,8 @@ main {
     z-index: 10;
     transition-duration: 0.1s;
     border: 2px solid #333;
+    outline: 1px solid #fff;
+    margin: 1px 0;
     box-sizing: border-box;
 }
 .piece-selected {
@@ -136,19 +133,41 @@ main {
 }
 
 #game-info {
-    background-color: var(--color-secondary-1);
+    background-color: var(--color-dark-1);
     width: 100%;
     min-height: 45px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 }
+
+#game-info button {
+    box-sizing: border-box;
+    min-height: 28px;
+    width: 35%;
+    height: 7vh;
+    background-color: var(--color-dark-2);
+    color: var(--color-light);
+    font-family: 'Russo One';
+    border: 2px solid var(--color-light);
+    font-size: 16px;
+    border-radius: 5px;
+    min-width: 110px;
+    max-width: 150px;
+    letter-spacing: 1    
+}
+    #game-info button:hover {
+        background-color: var(--color-primary);
+        cursor: pointer;
+        transition-duration: 0.2s;
+}
+
 #counter {
     box-sizing: border-box;
     width: 35%;
     height: 7vh;
     min-height: 28px;
-    background-color: var(--color-secondary-2);
+    background-color: var(--color-dark-2);
     color: var(--color-light);
     font-family: 'Russo One';
     display: flex;
@@ -161,27 +180,7 @@ main {
     max-width: 150px;
 
 }
-
-#reset-button {
-    box-sizing: border-box;
-    min-height: 28px;
-    width: 35%;
-    height: 7vh;
-    background-color: var(--color-secondary-2);
-    color: var(--color-light);
-    font-family: 'Russo One';
-    border: 2px solid var(--color-light);
-    font-size: 16px;
-    border-radius: 5px;
-    min-width: 110px;
-    max-width: 150px;
-    letter-spacing: 1                                                                                                                            px;
-}
-    #reset-button:hover {
-        background-color: var(--color-primary);
-        cursor: pointer;
-        transition-duration: 0.2s;
-    }
+                                                                                                                
 
 /* Difficulty */
 #difficulty {
@@ -206,7 +205,7 @@ main {
     padding: 5px 25px;
     border-radius: 5px;
     font-size: 16px;
-    background-color: var(--color-secondary-2);
+    background-color: var(--color-dark-2);
     color: var(--color-light);
     border: 2px solid var(--color-light); 
     width: 70%;
@@ -244,13 +243,16 @@ main {
 .closeButton {
     color: var(--color-light);
     font-family: 'Russo One';
-    background-color: var(--color-secondary-1);
+    background-color: var(--color-dark-2);
     border: 2px solid var(--color-primary);
     border-radius: 5px;
-    height: 30px;
-    font-size: 16px;
+    height: 35px;
+    font-size: 18px;
     letter-spacing: 1px;
     width: 60%;
+    max-width: 200px;
+    display: block;
+    margin: 20px auto 0;
 }
     .closeButton:hover {
         background-color: var(--color-primary);
