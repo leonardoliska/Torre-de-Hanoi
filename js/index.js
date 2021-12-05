@@ -57,7 +57,7 @@ function createGameInfo() {
     resetButton.id = 'reset-button'
 
     // Adicionar Texto
-    counter.innerText = 'Counter: 0'
+    counter.innerText = '0'
     resetButton.innerText = 'Reset'
 
     // Adicionar eventListener
@@ -66,8 +66,8 @@ function createGameInfo() {
     // Adicionar elementos em seus respectivos parents
     const gameContainer = document.getElementById("game-container")
     gameContainer.appendChild(gameInfoConteiner)
-    gameInfoConteiner.appendChild(counter)
     gameInfoConteiner.appendChild(resetButton)
+    gameInfoConteiner.appendChild(counter)
 }
 
 function createDifficultyScreen() {
@@ -78,6 +78,7 @@ function createDifficultyScreen() {
     const easyButton = document.createElement('button')
     const mediumButton = document.createElement('button')
     const hardButton = document.createElement('button')
+    const rulesButton = document.createElement('button')
 
     // Adicionar classes aos elementos
     difficultyTitle.classList.add('difficulty-title')
@@ -86,25 +87,30 @@ function createDifficultyScreen() {
     hardButton.classList.add('difficulty-button')
 
     // Adicionar ID's aos elementos
-    difficultyContainer.id = 'difficulty'
+    difficultyContainer.id = 'difficulty-container'
     easyButton.id = 'easy'
     mediumButton.id = 'medium'
     hardButton.id = 'hard'
+    rulesButton.id = 'rules-button'
 
     // Adicionar texto aos Elementos
     difficultyTitle.innerText = 'Selecione a Dificuldade'
-    easyButton.innerText = 'Easy'
-    mediumButton.innerText = 'Medium'
-    hardButton.innerText = 'Hard'
+    easyButton.innerText = 'Fácil'
+    mediumButton.innerText = 'Médio'
+    hardButton.innerText = 'Difícil'
+    rulesButton.innerText = 'Como Jogar'
 
     // EventListener
     difficultyContainer.addEventListener('click', selectDifficulty)
+    rulesButton.addEventListener('click', toggleRules)
 
     // Adicionar elementos em seus respectivos Parents
+    difficultyContainer.appendChild(rulesButton)
     difficultyContainer.appendChild(difficultyTitle)
     difficultyContainer.appendChild(easyButton)
     difficultyContainer.appendChild(mediumButton)
     difficultyContainer.appendChild(hardButton)
+
 
     const gameContainer = document.getElementById('game-container')
     gameContainer.appendChild(difficultyContainer)
@@ -154,8 +160,8 @@ function victoryPopUp() {
 
     // Adicionar classes e ID's
     victoryContainer.id = 'victory-container'
+    victoryContainer.classList.add('pop-up')
     victoryText.classList.add('victoryText')
-    closeButton.classList.add('closeButton')
 
     // Adicionar texto
     victoryText.innerText = 'Você Venceu!'
@@ -178,17 +184,20 @@ function closePopUp(event) {
 function updateCounter() {
     counter++
     const counterElement = document.querySelector('#counter')
-    counterElement.innerText = `Counter: ${counter}`
+    counterElement.innerText = counter
 }
 
 
 function checkVitory() {
+    // Verifica se as torre 2 e torre 3 possuem todas as peças para anunciar a vitória
     const towers = document.querySelectorAll('.tower')
-    const pieceClass = towers[2].querySelectorAll(".piece")
-    if (pieceClass.length == selectedDifficulty) {
-        victoryPopUp()
-        for (let i = 0; i < towers.length; i++) {
-            towers[i].removeEventListener("click", towerEventHandler)
+    for (let i = 1; i <= 2; i++) {
+        const towerPieces = towers[i].querySelectorAll('.piece')
+        if (towerPieces.length == selectedDifficulty) {
+            victoryPopUp()
+            for (let j = 0; j < towers.length; j++) {
+                towers[j].removeEventListener("click", towerEventHandler)
+            }
         }
     }
 }
@@ -222,9 +231,17 @@ function towerEventHandler(event) {
     checkVitory()
 }
 
+function toggleRules() {
+    const rulesContainer = document.querySelector('#rules-container')
+    rulesContainer.classList.toggle('hidden')
+}
+
 let selectedDifficulty = 4
 let counter = 0
-const pieceColors = ["#e4d0ff", "#d6b6ff", "#c79dff", "#b983ff", "#ab6aff", "#9c50ff", "#8e37ff"]
+const pieceColors = ["#000", "#242424", "#494949", "#727272", "#979797", "#d5d5d5", "#fff"]
+
+// Adicionar eventListener para fechar regras
+const rulesCloseButton = document.querySelector('#rules-container button')
+rulesCloseButton.addEventListener('click', toggleRules)
 
 resetGame()
-

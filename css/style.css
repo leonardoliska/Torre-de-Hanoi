@@ -2,293 +2,345 @@
 
 :root {
     --color-light: #fff;
-    --color-primary: #6E3CBC;
-    --color-secondary-1: #7267CB;
-    --color-secondary-2: #98BAE7;
-    --color-secondary-3: #B8E4F0;
-    --color-secondary-4: #99FEFF;
-    --color-secondary-5: #575569;
-
-
+    --color-primary: #2dd2d2;
+    --color-dark-1: #303030;
+    --color-dark-2: #484848;
 }
+
+/* AUXILIARES */
+.hidden {
+    display: none;
+    color : hsl(190, 90%, 20%);
+}
+.center {
+    margin: 0 auto;
+    display: block;
+}
+
+/* FONTES */
+h1 {
+    font-family: 'Press Start 2P';
+    font-size: 1.25em;
+    text-align: center;
+}
+h2 {
+    font-family: 'Russo One';
+    font-size: 1.25em;
+    letter-spacing: 1px;
+}
+button, div {
+    font-family: 'Russo One';
+    font-size: 1em;
+    letter-spacing: 1px;
+}
+p, li {
+    font-family: 'Russo One';
+    font-size: 1em;
+    letter-spacing: 0px;
+    list-style-type: disc;
+}
+footer p {
+    font-size: 1.1em;
+    letter-spacing: 1px;
+}
+
+/* BOTOES */
+button {
+    height: 2.2em;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    border: 2px solid var(--color-light);
+    background-color: var(--color-dark-2);
+    color: var(--color-light);
+    transition-duration: 0.2s;
+}
+    button:hover {
+        background-color: var(--color-primary);
+        cursor: pointer;
+        transition-duration: 0.2s;
+    }
 
 /* HEADER */
 header {
-    box-sizing: border-box;
-    background-color: var(--color-secondary-1);
-    font-family: "Press Start 2P";
-    text-align: center;
-    display: flex;
-    align-items: center;
     height: 15vh;
     min-height: 50px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-bottom: 10px solid var(--color-primary);
-    /* border-top: 10px solid var(--color-primary); */
-}
-header h1 {
-    width: 100%;
-    font-size: 20px;
-    color: var(--color-secondary-4);
+    background-color: var(--color-dark-1);
+    color: var(--color-primary)
 }
 
 /* FOOTER */
 footer {
-    box-sizing: border-box;
-    color: var(--color-secondary-4);
-    background-color: var(--color-secondary-1);
     height: 15vh;
+    min-height: 50px;
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 50px;
     border-top: 10px solid var(--color-primary);
+    background-color: var(--color-dark-1);
+    color: var(--color-primary);
 }
 footer p {
     padding: 10px 4%;
-    font-family: 'Russo One';
     margin: 0 2%;
-    font-size: 18px;
-    letter-spacing: 3px;
-    border-bottom: 2px solid var(--color-secondary-4);
-    border-left: 2px solid var(--color-secondary-4);
     border-radius: 0 0 0 5px;
+    border-bottom: 2px solid var(--color-primary);
+    border-left: 2px solid var(--color-primary);
 }
 footer p:first-child {
     text-align: right;
-    border-right: 2px solid var(--color-secondary-4);
-    border-left: 0;
     border-radius: 0 0 5px 0;
+    border-right: 2px solid var(--color-primary);
+    border-left: 0;
 }
 
 
 /* MAIN */
 main {
-    background-color: var(--color-secondary-2);
     height: 70vh;
-    min-height: 320px;
+    min-height: 267px;
     padding: 0 5%;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: var(--color-dark-2);
 }
 
 /* GAME */
 #game-container {
-    background-color: var(--color-secondary-1);
-    height: 50vh; 
-    width: 100%;
+    height: 80%; 
     min-height: 240px;
+    max-height: 400px;
+    width: 100%;
     max-width: 700px;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    border: 10px solid var(--color-secondary-3);
     border-radius: 25px;
+    border: 10px solid var(--color-primary);
+    background-color: var(--color-dark-1);
 }
 
 .tower {
-    box-sizing: border-box;
     width: 33.33%;
     height: 50%;
+    padding-bottom: 12px;
     position: relative;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-    padding-bottom: 12px;
 }
     .tower:hover {
         cursor: pointer;
     }
 
 .x-line {
-    width: 90%;
     height: 12px;
-    background-color: var(--color-secondary-5);
-    border-radius: 5px;
+    width: 90%;
     position: absolute;
-    bottom: 0%;
     left: 5%;
+    bottom: 0%;
+    border-radius: 5px;
+    background-color: var(--color-primary);
 }
 
 .y-line {
+    height: 85%;
     width: 12px;
-    height: 100%;
-    background-color: var(--color-secondary-5);
-    border-radius: 5px;
     position: absolute;
-    bottom: 0%;
     left: calc(calc(100% - 12px) / 2);
+    bottom: 0%;
+    border-radius: 5px;
+    background-color: var(--color-primary);
 }
 
 .piece {
     height: 10%;
     width: 90%;
+    margin: 1px 0;
+    box-sizing: border-box;
     border-radius: 5px;
+    border: 2px solid #333;
+    outline: 1px solid #fff;
     z-index: 10;
     transition-duration: 0.1s;
-    border: 2px solid #333;
-    box-sizing: border-box;
 }
 .piece-selected {
     transform: translateY(-10px);
 }
 
 #game-info {
-    background-color: var(--color-secondary-1);
     width: 100%;
     min-height: 45px;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
+    background-color: var(--color-dark-1);
 }
+
+#reset-button {
+    width: 30%;
+    margin-right: 15%;
+}
+
 #counter {
     box-sizing: border-box;
-    width: 35%;
-    height: 7vh;
-    min-height: 28px;
-    background-color: var(--color-secondary-2);
-    color: var(--color-light);
-    font-family: 'Russo One';
+    width: 2.5em;
+    height: 2.2em;
+    margin-right: 10%;
     display: flex;
-    border: 2px solid var(--color-light);
     border-radius: 5px;
     align-items: center;
     justify-content: center;
     word-spacing: 10px;
-    min-width: 110px;
-    max-width: 150px;
-
-}
-
-#reset-button {
-    box-sizing: border-box;
-    min-height: 28px;
-    width: 35%;
-    height: 7vh;
-    background-color: var(--color-secondary-2);
+    border: 2px solid var(--color-primary);
+    background-color: var(--color-dark-2);
     color: var(--color-light);
-    font-family: 'Russo One';
-    border: 2px solid var(--color-light);
-    font-size: 16px;
-    border-radius: 5px;
-    min-width: 110px;
-    max-width: 150px;
-    letter-spacing: 1                                                                                                                            px;
-}
-    #reset-button:hover {
-        background-color: var(--color-primary);
-        cursor: pointer;
-        transition-duration: 0.2s;
-    }
+}                                                                          
 
 /* Difficulty */
-#difficulty {
-    font-family: 'Russo One';
-    margin: auto;
+#difficulty-container {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 }
+#rules-button {
+    width: min(70%, 220px);
+    margin: 10px;
+}
 .difficulty-title {
-    text-align: center;
     width: 100%;
-    margin-bottom: 20px;
+    padding: 15px 0 5px;
+    text-align: center;
+    border-top: 2px solid var(--color-primary);
     color: var(--color-light);
-    font-size: 20px;
-    letter-spacing: 2px;
 }
 .difficulty-button {
-    font-family: 'Russo One';
-    margin: 10px;
-    padding: 5px 25px;
-    border-radius: 5px;
-    font-size: 16px;
-    background-color: var(--color-secondary-2);
-    color: var(--color-light);
-    border: 2px solid var(--color-light); 
-    width: 70%;
-    letter-spacing: 2px;
+    width: min(70%, 220px);
+    margin: 10px auto;
 }
-    .difficulty-button:hover {
-        background-color: var(--color-primary);
-        cursor: pointer;
-        transition-duration: 0.2s;
-    }
+/* POPUP */
+.pop-up {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    z-index: 20;
+    border: 5px solid var(--color-primary);
+    border-radius: 10px;
+    background-color: var(--color-dark-1);
+}
 
-/* Victory PopUP */
+/* RULES CONTAINER */
+#rules-container {
+    width: min(96%, 800px);
+    padding: 10px 4% 20px;
+}
+#rules-container h2 {
+    margin: 15px 0 10px 0;
+    color: var(--color-primary);
+}
+
+#rules-container p,
+#rules-container li {
+    margin: 8px 0 8px 4%; 
+    color: var(--color-light);
+}
+
+/* VICTORY CONTAINER */
 #victory-container {
     width: 60%;
     height: 30vh;
-    background-color: var(--color-secondary-2);
-    position: absolute;
-    top: 35%;
-    left: 20%;
-    box-sizing: border-box;
-    border-radius: 10px;
-    border: 5px solid var(--color-primary);
+    min-height: 150px;
+    padding: 15px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    min-height: 100px;
-    z-index: 20;
 }
 .victoryText {
     color: var(--color-light);
-    font-family: 'Russo One';
-    font-size: 20px;
 }
-.closeButton {
-    color: var(--color-light);
-    font-family: 'Russo One';
-    background-color: var(--color-secondary-1);
-    border: 2px solid var(--color-primary);
-    border-radius: 5px;
-    height: 30px;
-    font-size: 16px;
-    letter-spacing: 1px;
-    width: 60%;
-}
-    .closeButton:hover {
-        background-color: var(--color-primary);
-        cursor: pointer;
-        transition-duration: 0.2s;
-        border-color: var(--color-light);
-    }
 
 /* MEDIA QUERIES */
-@media only screen and (min-width: 568px) {
-    header h1 {
-        font-size: 26px;
+@media only screen and (orientation: landscape) and (max-height: 500px) {
+    footer {
+        display: none;
     }
-    footer p {
-        font-size: 20px;
-    }
-    #victory-container {
-        max-width: 330px;
-        left: calc(calc(100% - 330px) / 2)
+    main {
+        height: 85vh;
     }
 }
 
-@media only screen and (min-width: 1024px) {
-    header h1 {
-        font-size: 30px;
+@media only screen and (orientation: landscape) {
+    #difficulty-container {
+        flex-flow: row wrap;
+        align-content: center;
     }
-    footer p {
-        font-size: 24px;
+    #rules-container {
+        padding: 0 2% 5px;
     }
-    #difficulty {
-        flex-direction: row;
-        flex-wrap: wrap;
+    #rules-button {
+        width: min(50%, 200px);
     }
     .difficulty-title {
-        font-size: 25px;
+        margin: 20px 0;
     }
     .difficulty-button {
-        width: 20%;
-        font-size: 20px;
+        width: 25%;
+        margin: 10px 0;
+    }
+}
+
+@media only screen and (orientation: landscape) and (min-width: 568px) {
+    #rules-button {
+        width: 45%;
+    }
+    #rules-container {
+        padding: 20px 3% 35px;
+    }
+    #rules-container button {
+        margin-top: 25px;
+    }
+}
+
+@media only screen and (min-width: 400px) {
+    :root {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (min-width: 568px) {
+    :root {
+        font-size: 21px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    :root {
+        font-size: 23px;
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    :root {
+        font-size: 32px;
+    }
+    #game-container {
+        max-width: 1000px;
+        max-height: 600px;
     }
 }
