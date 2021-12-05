@@ -238,7 +238,7 @@ function toggleRules() {
 
 let selectedDifficulty = 4
 let counter = 0
-const pieceColors = ["#fff", "#fff", "#fff", "#fff", "#fff", "#fff", "#fff"]
+const pieceColors = ["#000", "#242424", "#494949", "#727272", "#979797", "#d5d5d5", "#fff"]
 
 // Adicionar eventListener para fechar regras
 const rulesCloseButton = document.querySelector('#rules-container button')

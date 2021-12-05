@@ -10,6 +10,7 @@
 /* AUXILIARES */
 .hidden {
     display: none;
+    color : hsl(190, 90%, 20%);
 }
 .center {
     margin: 0 auto;
