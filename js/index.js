@@ -54,9 +54,10 @@ function createGameInfo() {
     // Adicionar ID's
     gameInfoConteiner.id = 'game-info'
     counter.id = 'counter'
+    resetButton.id = 'reset-button'
 
     // Adicionar Texto
-    counter.innerText = 'Counter: 0'
+    counter.innerText = '0'
     resetButton.innerText = 'Reset'
 
     // Adicionar eventListener
@@ -65,8 +66,8 @@ function createGameInfo() {
     // Adicionar elementos em seus respectivos parents
     const gameContainer = document.getElementById("game-container")
     gameContainer.appendChild(gameInfoConteiner)
-    gameInfoConteiner.appendChild(counter)
     gameInfoConteiner.appendChild(resetButton)
+    gameInfoConteiner.appendChild(counter)
 }
 
 function createDifficultyScreen() {
@@ -94,9 +95,9 @@ function createDifficultyScreen() {
 
     // Adicionar texto aos Elementos
     difficultyTitle.innerText = 'Selecione a Dificuldade'
-    easyButton.innerText = 'Easy'
-    mediumButton.innerText = 'Medium'
-    hardButton.innerText = 'Hard'
+    easyButton.innerText = 'Fácil'
+    mediumButton.innerText = 'Médio'
+    hardButton.innerText = 'Difícil'
     rulesButton.innerText = 'Como Jogar'
 
     // EventListener
@@ -183,7 +184,7 @@ function closePopUp(event) {
 function updateCounter() {
     counter++
     const counterElement = document.querySelector('#counter')
-    counterElement.innerText = `Counter: ${counter}`
+    counterElement.innerText = counter
 }
 
 
