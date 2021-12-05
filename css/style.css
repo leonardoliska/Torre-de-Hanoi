@@ -72,13 +72,13 @@ main {
 /* GAME */
 #game-container {
     background-color: var(--color-dark-1);
-    height: 50vh; 
+    height: 80%; 
     width: 100%;
     min-height: 240px;
     max-width: 700px;
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
+    align-items: center;
     border: 10px solid var(--color-primary);
     border-radius: 25px;
 }
@@ -87,6 +87,7 @@ main {
     box-sizing: border-box;
     width: 33.33%;
     height: 50%;
+    max-height: 40vw;
     position: relative;
     display: flex;
     flex-direction: column-reverse;
@@ -145,7 +146,7 @@ main {
     box-sizing: border-box;
     min-height: 28px;
     width: 35%;
-    height: 7vh;
+    height: 40px;
     background-color: var(--color-dark-2);
     color: var(--color-light);
     font-family: 'Russo One';
@@ -160,12 +161,12 @@ main {
         background-color: var(--color-primary);
         cursor: pointer;
         transition-duration: 0.2s;
-}
+    }
 
 #counter {
     box-sizing: border-box;
     width: 35%;
-    height: 7vh;
+    height: 40px;
     min-height: 28px;
     background-color: var(--color-dark-2);
     color: var(--color-light);
@@ -183,9 +184,9 @@ main {
                                                                                                                 
 
 /* Difficulty */
-#difficulty {
+#difficulty-container {
     font-family: 'Russo One';
-    margin: auto;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -194,10 +195,11 @@ main {
 .difficulty-title {
     text-align: center;
     width: 100%;
-    margin-bottom: 20px;
     color: var(--color-light);
+    border-top: 2px solid var(--color-primary);
+    padding-top: 10px;
     font-size: 20px;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 .difficulty-button {
     font-family: 'Russo One';
@@ -212,28 +214,80 @@ main {
     letter-spacing: 2px;
 }
     .difficulty-button:hover {
-        background-color: var(--color-primary);
         cursor: pointer;
+        background-color: var(--color-light);
+        border-color: var(--color-dark-2); 
+        color: var(--color-dark-2);
         transition-duration: 0.2s;
-    }
+}
 
-/* Victory PopUP */
-#victory-container {
-    width: 60%;
-    height: 30vh;
-    background-color: var(--color-secondary-2);
+#rules-button {
+    font-family: 'Russo One';
+    margin: 10px;
+    padding: 5px 25px;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: var(--color-dark-2);
+    color: var(--color-light);
+    border: 2px solid var(--color-light); 
+    width: 70%;
+    height: 35px;
+    letter-spacing: 2px;
+}
+
+#rules-button:hover {
+    cursor: pointer;
+    background-color: var(--color-light);
+    border-color: var(--color-dark-2); 
+    color: var(--color-dark-2);
+    transition-duration: 0.2s;
+}
+
+/* POPUP */
+.pop-up {
+    background-color: var(--color-dark-1);
     position: absolute;
-    top: 35%;
-    left: 20%;
     box-sizing: border-box;
     border-radius: 10px;
     border: 5px solid var(--color-primary);
+    z-index: 20;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+/* RULES CONTAINER */
+#rules-container {
+    width: 96%;
+    padding: 15px 4% 30px;
+}
+
+#rules-container h2 {
+    font-size: 26px;
+    color: var(--color-primary);
+    font-family: 'Russo One';
+    margin: 15px 0 10px 0;
+}
+
+#rules-container p,
+#rules-container li {
+    color: var(--color-light);
+    font-family: 'Russo One';
+    font-size: 16px;
+    margin: 8px 0 8px 4%; 
+}
+
+/* VICTORY CONTAINER */
+#victory-container {
+    width: 60%;
+    height: 30vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    min-height: 100px;
-    z-index: 20;
+    min-height: 150px;
+    padding: 15px 0;
 }
 .victoryText {
     color: var(--color-light);
@@ -269,9 +323,27 @@ main {
     footer p {
         font-size: 20px;
     }
+    #game-container {
+    }
     #victory-container {
         max-width: 330px;
-        left: calc(calc(100% - 330px) / 2)
+    }
+    #rules-container {
+        max-width: 1000px;
+        width: min(95%, 720px);
+    }
+    #rules-container h2 {
+        margin: 20px 0 12px; 
+        font-size: 28px;
+    }
+    #rules-container p,
+    #rules-container li {
+        font-size: 18px;
+        margin: 12px 0 12px 4%; 
+    }
+    .closeButton {
+        height: 40px;
+        font-size: 20px;
     }
 }
 
@@ -292,5 +364,57 @@ main {
     .difficulty-button {
         width: 20%;
         font-size: 20px;
+    }
+    #game-container {
+        max-width: 700px;
+    }
+    #rules-container {
+        max-width: 720px;
+    }
+    #rules-container h2 {
+        margin: 30px 0 20px; 
+        font-size: 32px;
+    }
+    #rules-container p,
+    #rules-container li {
+        font-size: 21px;
+        margin: 20px 0 20px 4%; 
+    }
+    .closeButton {
+        margin-top: 35px;
+        font-size: 22px;
+        height: 40px;
+        max-width: 250px;
+    }
+}
+
+@media only screen and (orientation: landscape) {
+    main {
+        min-height: 200px;
+    }
+    #game-container {
+        min-height: 200px;
+    }
+    .tower {
+        height: 60%;
+    }
+}
+
+@media only screen and (max-height: 360px) {
+    #rules-container {
+        padding: 0 3% 10px;
+    }
+    #rules-container h2 {
+        margin: 15px 0 10px; 
+        font-size: 24px;
+    }
+    #rules-container p,
+    #rules-container li {
+        font-size: 16px;
+        margin: 12px 0 12px 4%; 
+    }
+    .closeButton {
+        height: 30px;
+        font-size: 16px;
     }
 }

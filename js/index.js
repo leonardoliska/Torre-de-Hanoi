@@ -48,24 +48,27 @@ function createPieces() {
 function createGameInfo() {
     // Criar elementos
     const gameInfoConteiner = document.createElement('section')
+    const rulesButton = document.createElement('button')
     const counter = document.createElement('div')
     const resetButton = document.createElement('button')
 
     // Adicionar ID's
     gameInfoConteiner.id = 'game-info'
     counter.id = 'counter'
-    resetButton.id = 'reset-button'
 
     // Adicionar Texto
+    rulesButton.innerText = 'Rules'
     counter.innerText = 'Counter: 0'
     resetButton.innerText = 'Reset'
 
     // Adicionar eventListener
     resetButton.addEventListener('click', resetGame)
+    rulesButton.addEventListener('click', showRules)
 
     // Adicionar elementos em seus respectivos parents
     const gameContainer = document.getElementById("game-container")
     gameContainer.appendChild(gameInfoConteiner)
+    gameInfoConteiner.appendChild(rulesButton)
     gameInfoConteiner.appendChild(counter)
     gameInfoConteiner.appendChild(resetButton)
 }
@@ -105,6 +108,7 @@ function createDifficultyScreen() {
     difficultyContainer.appendChild(easyButton)
     difficultyContainer.appendChild(mediumButton)
     difficultyContainer.appendChild(hardButton)
+
 
     const gameContainer = document.getElementById('game-container')
     gameContainer.appendChild(difficultyContainer)
@@ -146,6 +150,42 @@ function resetGame() {
     createDifficultyScreen()
 }
 
+function showRules() {
+    const rules = [
+        ['h2', 'Objetivo'],
+        ['p', 'Passar todas as peças da torre inicial para outra torre.'],
+        ['h2', 'Regras'],
+        ['ul', ''],
+        ['li', 'Só pode movimentar uma peça por vez'],
+        ['li', 'Uma peça maior não pode ficar acima de uma menor.'],
+        ['li', 'Não é permitido movimentar uma peça que esteja abaixo de outra.']
+    ]
+    
+    const rulesContainer = document.createElement('div')
+    const closeButton = document.createElement('button')
+
+    for (let i = 0; i < rules.length; i++) {
+        const textContainer = document.createElement(rules[i][0])
+        textContainer.innerText = rules[i][1]
+        rulesContainer.appendChild(textContainer)
+    } 
+
+    rulesContainer.id = 'rules-container'
+    rulesContainer.classList.add('pop-up')
+    closeButton.classList.add('closeButton')
+
+    // Adicionar texto
+    closeButton.innerText = 'Fechar'
+
+    // Adicionar eventListener
+    closeButton.addEventListener('click', closePopUp)
+
+    // Adicionar elementos em seus respectivos parents
+    rulesContainer.appendChild(closeButton)
+    const body = document.querySelector('body')
+    body.appendChild(rulesContainer)
+}
+
 function victoryPopUp() {
     // Criar elementos
     const victoryContainer = document.createElement('div')
@@ -154,6 +194,7 @@ function victoryPopUp() {
 
     // Adicionar classes e ID's
     victoryContainer.id = 'victory-container'
+    victoryContainer.classList.add('pop-up')
     victoryText.classList.add('victoryText')
     closeButton.classList.add('closeButton')
 
@@ -183,12 +224,15 @@ function updateCounter() {
 
 
 function checkVitory() {
+    // Verifica se as torre 2 e torre 3 possuem todas as peças para anunciar a vitória
     const towers = document.querySelectorAll('.tower')
-    const pieceClass = towers[2].querySelectorAll(".piece")
-    if (pieceClass.length == selectedDifficulty) {
-        victoryPopUp()
-        for (let i = 0; i < towers.length; i++) {
-            towers[i].removeEventListener("click", towerEventHandler)
+    for (let i = 1; i <= 2; i++) {
+        const towerPieces = towers[i].querySelectorAll('.piece')
+        if (towerPieces.length == selectedDifficulty) {
+            victoryPopUp()
+            for (let j = 0; j < towers.length; j++) {
+                towers[j].removeEventListener("click", towerEventHandler)
+            }
         }
     }
 }
@@ -224,7 +268,7 @@ function towerEventHandler(event) {
 
 let selectedDifficulty = 4
 let counter = 0
-const pieceColors = ["#e4d0ff", "#d6b6ff", "#c79dff", "#b983ff", "#ab6aff", "#9c50ff", "#8e37ff"]
+const pieceColors = ["#fff", "#fff", "#fff", "#fff", "#fff", "#fff", "#fff"]
 
 resetGame()
 
