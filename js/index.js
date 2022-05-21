@@ -34,7 +34,7 @@ function createPieces() {
         piece.classList.add("piece")
 
         //Adicionar Cores
-        piece.style.backgroundColor = pieceColors[i - 1]
+        piece.style.backgroundColor = '#71f5f5'
 
         //Adicionar Width
         piece.style.width = `${(50 / selectedDifficulty) * i + 20}%`
@@ -238,8 +238,6 @@ function toggleRules() {
 
 let selectedDifficulty = 4
 let counter = 0
-const pieceColors = ["#000", "#242424", "#494949", "#727272", "#979797", "#d5d5d5", "#fff"]
-
 // Adicionar eventListener para fechar regras
 const rulesCloseButton = document.querySelector('#rules-container button')
 rulesCloseButton.addEventListener('click', toggleRules)
